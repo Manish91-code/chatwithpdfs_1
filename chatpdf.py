@@ -79,8 +79,8 @@ def handle_userinput(user_question):
 
 def main():
     load_dotenv()
-    st.set_page_config(page_title="PDF Bot",
-                       page_icon=":books:")
+    st.set_page_config(page_title="Desktop Search Engine",
+                       page_icon=":desktop_computer:")
     st.write(css, unsafe_allow_html=True)
 
     if "conversation" not in st.session_state:
@@ -88,17 +88,17 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("PDF Bot :books:")
-    user_question = st.text_input("Ask a question about your documents:")
+    st.header("Desktop Search Engine :desktop_computer:")
+    user_question = st.text_input("Ask questions about the PDF here:")
     if user_question:
         handle_userinput(user_question)
 
     with st.sidebar:
-        st.subheader("Your documents")
+        st.subheader("Uploaded documents")
         pdf_docs = st.file_uploader(
             "Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
         if st.button("Process"):
-            with st.spinner("Processing"):
+            with st.spinner("Running"):
                 # get pdf text
                 raw_text = get_pdf_text(pdf_docs)
                 # print(raw_text)
